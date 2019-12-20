@@ -1553,6 +1553,14 @@ int32_t cc_send_ecm(struct s_client *cl, ECM_REQUEST *er)
 				{
 					card = ncard; //found it, use it!
 					break;
+					
+					 if((ncard->maxdown<1) &&
+
+                                           (cur_er->client) &&
+                                           (strncmp(ph[cur_er->client->ctyp].desc,"dvbapi",6)!=0) &&
+                                           (!cur_er->client->account->cccignorereshare))
+
+                                           continue;
 				}
 			}
 		}
